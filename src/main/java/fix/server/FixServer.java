@@ -50,7 +50,6 @@ public class FixServer {
                 out.println("Response: " + message);
             }
         } catch (IOException e) {
-            e.printStackTrace();
         } finally {
             connectionCount.decrementAndGet(); // Decrement connection count
             System.out.println("Active connections: " + connectionCount.get());

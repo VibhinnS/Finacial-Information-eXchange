@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FixSessionManager {
-    private Map<String, FixSession> sessions = new HashMap<>();
+    private final Map<String, FixSession> sessions = new HashMap<>();
 
     public FixSession createSession(String sessionId) {
         FixSession session = new FixSession(sessionId);
