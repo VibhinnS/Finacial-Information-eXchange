@@ -54,11 +54,9 @@ class FixSessionManager {
 }
 
 class FixSession {
-    private final String sessionId;
     private long lastHeartbeat;
 
     public FixSession(String sessionId) {
-        this.sessionId = sessionId;
         this.lastHeartbeat = System.currentTimeMillis();
     }
 
