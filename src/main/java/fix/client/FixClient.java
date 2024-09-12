@@ -1,11 +1,33 @@
 package fix.client;
 
-import fix.message.FixMessageParser;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.HashMap;
 import java.util.Map;
+
+class FixMessageParser {
+    public static Map<String, String> parseFixMessage(String fixMessage) {
+        Map<String, String> messageMap = new HashMap<>();
+        String[] keyValuePairs = fixMessage.split("\\|");
+        for (String keyValue : keyValuePairs) {
+            String[] pair = keyValue.split("=");
+            if (pair.length == 2) {
+                messageMap.put(pair[0], pair[1]);
+            }
+        }
+        return messageMap;
+    }
+
+    public static String buildFixMessage(Map<String, String> fields) {
+        StringBuilder builder = new StringBuilder();
+        fields.forEach((key, value) -> builder.append(key).append("=").append(value).append("|"));
+        return builder.toString();
+    }
+}
 
 public class FixClient {
     private static final String HOST = "localhost";
@@ -23,14 +45,13 @@ public class FixClient {
             fixMessage.put("49", "CLIENT"); // SenderCompID
             fixMessage.put("56", "SERVER"); // TargetCompID
 
-            String messageToSend = fix.message.FixMessageParser.buildFixMessage(fixMessage);
+            String messageToSend = FixMessageParser.buildFixMessage(fixMessage);
             out.println(messageToSend);
 
             // Read server response
             String response = in.readLine();
             System.out.println("Server response: " + response);
         } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 }
