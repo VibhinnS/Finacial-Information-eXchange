@@ -1,7 +1,6 @@
 package fix.client;
 
-import fix.message.MessageType;
-import fix.session.FixSessionManager;
+import fix.message.FixMessageParser;
 
 import java.io.*;
 import java.net.Socket;
@@ -24,7 +23,7 @@ public class FixClient {
             fixMessage.put("49", "CLIENT"); // SenderCompID
             fixMessage.put("56", "SERVER"); // TargetCompID
 
-            String messageToSend = FixMessageParser.buildFixMessage(fixMessage);
+            String messageToSend = fix.message.FixMessageParser.buildFixMessage(fixMessage);
             out.println(messageToSend);
 
             // Read server response

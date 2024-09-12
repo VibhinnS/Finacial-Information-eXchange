@@ -1,0 +1,5 @@
+fix\client\FixClient.class
+fix\message\FixMessageParser.class
+fix\session\FixSession.class
+fix\server\FixServer.class
+fix\session\FixSessionManager.class
