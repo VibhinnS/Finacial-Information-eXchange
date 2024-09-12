@@ -11,9 +11,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class FixServer {
     private static final int PORT = 5000;
-    private FixSessionManager sessionManager = new FixSessionManager();
-    private ExecutorService executorService = Executors.newFixedThreadPool(10); 
-    private AtomicInteger connectionCount = new AtomicInteger(0);
+    private final FixSessionManager sessionManager = new FixSessionManager();
+    private final ExecutorService executorService = Executors.newFixedThreadPool(10); 
+    private final AtomicInteger connectionCount = new AtomicInteger(0);
 
     public static void main(String[] args) {
         new FixServer().start();

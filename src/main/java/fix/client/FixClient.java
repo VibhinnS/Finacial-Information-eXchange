@@ -1,6 +1,6 @@
 package fix.client;
 
-import fix.message.FixMessageParser;
+import fix.message.MessageType;
 import fix.session.FixSessionManager;
 
 import java.io.*;
