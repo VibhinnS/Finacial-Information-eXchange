@@ -29,7 +29,6 @@ public class FixServer {
                 executorService.submit(() -> handleClient(clientSocket));
             }
         } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
