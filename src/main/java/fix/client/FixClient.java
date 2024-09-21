@@ -38,12 +38,11 @@ public class FixClient {
              PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
              BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
 
-            // Example FIX message to send
             Map<String, String> fixMessage = new HashMap<>();
-            fixMessage.put("8", "FIX.4.2"); // BeginString
-            fixMessage.put("35", "D");      // MessageType = New Order - Single
-            fixMessage.put("49", "CLIENT"); // SenderCompID
-            fixMessage.put("56", "SERVER"); // TargetCompID
+            fixMessage.put("8", "FIX.4.2"); 
+            fixMessage.put("35", "D");      
+            fixMessage.put("49", "CLIENT"); 
+            fixMessage.put("56", "SERVER");
 
             String messageToSend = FixMessageParser.buildFixMessage(fixMessage);
             out.println(messageToSend);
